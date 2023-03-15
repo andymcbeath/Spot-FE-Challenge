@@ -40,3 +40,38 @@
 .read-the-docs {
   color: #888;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.display-block {
+  opacity: 1;
+}
+
+.modal-main {
+  position: fixed;
+  background-color: white;
+  width: 80%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.modal.display-block .modal-main {
+  opacity: 1;
+  transform: translate(-50%, -60%);
+}
