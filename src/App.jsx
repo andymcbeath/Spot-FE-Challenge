@@ -1,5 +1,4 @@
 import React from "react"
-import './App.css'
 import Reservations from "./component/Form";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
