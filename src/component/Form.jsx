@@ -14,7 +14,7 @@ const schema = Yup.object().shape({
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
   email: Yup.string().email('the email address is invalid').required(),
-  event: Yup.string().required(),
+  phoneNumber: Yup.string().phoneNumber('the phone number is invalid'),
 });
 
 export default function Booking() {
@@ -39,7 +39,7 @@ export default function Booking() {
               firstName: '',
               lastName: '',
               email: '',
-              event: ''
+              phoneNumber: '(XXX)XXX-XXXX'
             }}
             onSubmit={handleSubmit}
           >
@@ -93,7 +93,7 @@ export default function Booking() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       isValid={touched.email && !errors.email}
-                      className={touched.firstName && !errors.email ? 'is-valid' : touched.email ? 'is-invalid' : ''}
+                      className={touched.email && !errors.email ? 'is-valid' : touched.email ? 'is-invalid' : ''}
                     />
                     <Form.Control.Feedback type="invalid">Please provide a valid email!</Form.Control.Feedback>
                     <Form.Control.Feedback>Thank you!</Form.Control.Feedback>
@@ -101,17 +101,16 @@ export default function Booking() {
                 </Row>
                 <Row className="mb-6" style={{ paddingBottom: "1rem"}}>
                   <Form.Group as={Col} md="12" controlId="validationFormik02">
-                    <Form.Label>Please Describe Your Event</Form.Label>
+                    <Form.Label>Phone Number</Form.Label>
                     <Form.Control
-                      as="textarea"
-                      type="text"
-                      name="event"
-                      value={values.event}
+                      type="tel"
+                      name="phoneNumber"
+                      value={values.phoneNumber}
                       onChange={handleChange}
-                      isValid={touched.event && !errors.event}
-                      className={touched.event && !errors.event ? 'is-valid' : touched.event ? 'is-invalid' : ''}
+                      isValid={touched.phoneNumber && !errors.phoneNumber}
+                      className={touched.phoneNumber && !errors.phoneNumber ? 'is-valid' : touched.phoneNumber ? 'is-invalid' : ''}
                     />
-                    <Form.Control.Feedback type="invalid">Please describe your event!</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">Please enter a valid US phone number in the format (XXX)XXX-XXXX</Form.Control.Feedback>
                     <Form.Control.Feedback>Thank you!</Form.Control.Feedback>
                   </Form.Group>
                 </Row>
@@ -121,9 +120,6 @@ export default function Booking() {
           </Formik>
         </Card.Body>
       </Card>
-     <Card className="BioPic shadow d-flex flex-column align-items-center" style={{width: "100%", marginTop: "4rem"}} >
-      <Card.Img src="/assets/On-Tour-Photo.jpg" alt="Card image" />
-     </Card>
     </div>
   )
 }
