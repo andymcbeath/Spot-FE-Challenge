@@ -2,7 +2,7 @@ import CardImg from "react-bootstrap/CardImg";
 import Card from "react-bootstrap/Card";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CardHeader from "react-bootstrap/CardHeader";
+import Row from "react-bootstrap/Row";
 
 export default function Search() {
   const [data, setData] = useState([]);
@@ -18,16 +18,16 @@ export default function Search() {
   }, []);
 
   return (
-    <div className="row">
+    <Row className="mb-3">
       {data.map((item) => (
-        <div className="col-md-4" key={item.id}>
-          <Card>
-            <CardImg variant="top" src={item.image} />
-            <CardHeader>{item.title}</CardHeader>
-            <CardHeader>{item.distance}</CardHeader>
+        <div className="col-md-12" key={item.id}>
+          <Card fluid>
+            <CardImg variant="left" src={item.image} />
+            <Card.Body>{item.title}</Card.Body>
+            <Card.Body>{item.distance}</Card.Body>
           </Card>
         </div>
       ))}
-    </div>
+    </Row>
   );
 }
