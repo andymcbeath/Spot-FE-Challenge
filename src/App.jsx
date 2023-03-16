@@ -1,14 +1,15 @@
-import React from "react"
+import React from "react";
 import Reservations from "./component/Form";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./component/Search";
 
 function App() {
-
   return (
-   <div className="App">
-    <Reservations />
-   </div>
-  )
+    <div className="App">
+      <Search />
+      <Reservations />
+    </div>
+  );
 }
 
-export default App
+export default App;

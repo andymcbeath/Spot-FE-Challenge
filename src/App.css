@@ -1,12 +1,8 @@
-html {
-  scroll-behavior: smooth;
-}
-
 .btn {
   background-color: rgb(28, 189, 114);
   color: white;
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   padding-left: 2rem;
   padding-right: 2rem;
   margin-top: 1.5rem;

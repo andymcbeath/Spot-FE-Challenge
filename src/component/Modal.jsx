@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Modal = ({ show, handleClose, children }) => {
-  const [animation, setAnimation] = useState('');
+  const [animation, setAnimation] = useState("");
 
   useEffect(() => {
     if (show) {
-      setAnimation('slide-in');
+      setAnimation("slide-in");
     } else {
-      setAnimation('slide-out');
+      setAnimation("slide-out");
       setTimeout(() => {
-        setAnimation('');
+        setAnimation("");
       }, 250);
     }
   }, [show]);
 
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+  const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
@@ -27,4 +27,3 @@ const Modal = ({ show, handleClose, children }) => {
 };
 
 export default Modal;
-
