@@ -24,7 +24,7 @@ export default function Reservations() {
     try {
       await axios.post("/reservations", values);
       alert("Form submitted successfully!");
-      setShowModal(false); // Hide the modal on successful submission
+      setShowModal(true);
     } catch (error) {
       console.error(error);
       alert("Form submission failed");
