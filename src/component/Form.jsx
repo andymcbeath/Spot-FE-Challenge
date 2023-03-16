@@ -15,8 +15,9 @@ const schema = Yup.object().shape({
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
   email: Yup.string().email('the email address is invalid').required(),
-  phoneNumber: Yup.string().matches(/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/,"Invalid phone number"),
+  phoneNumber: Yup.string().matches(/^\(\d{3}\)\d{3}-\d{4}$/, "Invalid phone number"),
 });
+
 
 export default function Reservations() {
   const [showModal, setShowModal] = useState(false);
@@ -45,7 +46,7 @@ export default function Reservations() {
               firstName: '',
               lastName: '',
               email: '',
-              phoneNumber: '(XXX)XXX-XXXX'
+              phoneNumber: '',
             }}
             onSubmit={handleSubmit}
           >
@@ -61,7 +62,7 @@ export default function Reservations() {
               <Form noValidate onSubmit={handleSubmit}>
                 <Row className="mb-3">
                   <Form.Group as={Col} md="12" hasvalidation="true" controlId="validationFormik01">
-                    <Form.Label>First name</Form.Label>
+                    <Form.Label>First Name</Form.Label>
                     <Form.Control
                       type="text"
                       name="firstName"
@@ -75,7 +76,7 @@ export default function Reservations() {
                     <Form.Control.Feedback>Thank you!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} md="12" controlId="validationFormik02">
-                    <Form.Label>Last name</Form.Label>
+                    <Form.Label>Last Name</Form.Label>
                     <Form.Control
                       type="text"
                       name="lastName"
@@ -113,6 +114,7 @@ export default function Reservations() {
                       name="phoneNumber"
                       value={values.phoneNumber}
                       onChange={handleChange}
+                      placeholder="(XXX)XXX-XXXX"
                       isValid={touched.phoneNumber && !errors.phoneNumber}
                       className={touched.phoneNumber && !errors.phoneNumber ? 'is-valid' : touched.phoneNumber ? 'is-invalid' : ''}
                     />
@@ -120,7 +122,7 @@ export default function Reservations() {
                     <Form.Control.Feedback>Thank you!</Form.Control.Feedback>
                   </Form.Group>
                 </Row>
-                <Button type="submit">Purcahse for $14.00</Button>
+                <Button className ="Purchase" type="submit">Purcahse for $14.00</Button>
               </Form>
             )}
           </Formik>
