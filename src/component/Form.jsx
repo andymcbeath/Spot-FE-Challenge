@@ -7,7 +7,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Card from 'react-bootstrap/Card'
 import axios from 'axios';
-
+import Modal from './Modal';
 
 
 const schema = Yup.object().shape({
@@ -17,10 +17,10 @@ const schema = Yup.object().shape({
   phoneNumber: Yup.string().phoneNumber('the phone number is invalid'),
 });
 
-export default function Booking() {
+export default function Reservations() {
   const handleSubmit = async (values) => {
     try {
-      await axios.post("/bookings", values);
+      await axios.post("/resevations", values);
       alert("Form submitted successfully!");
     } catch (error) {
       console.error(error);
@@ -114,7 +114,7 @@ export default function Booking() {
                     <Form.Control.Feedback>Thank you!</Form.Control.Feedback>
                   </Form.Group>
                 </Row>
-                <Button type="submit">Submit form</Button>
+                <Button type="submit">Purcahse for $14.00</Button>
               </Form>
             )}
           </Formik>
