@@ -22,11 +22,17 @@ export default function Search() {
       {data.map((item) => (
         <Card className="d-flex" key={item.id}>
           <CardImg
-            style={{ width: "26%", paddingTop: "2rem", paddingBottom: "2rem", paddingRight: "1rem" }}
+            style={{
+              width: "26%",
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
+              paddingRight: "1rem",
+              borderRadius: "1.3rem",
+            }}
             src={item.image}
           />
           <Card.Body className="col-md-7">
-            <h1>{item.title}</h1>
+            <h2>{item.title}</h2>
             <br />
             <p>{item.distance}</p>
             <br />
