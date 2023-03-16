@@ -8,31 +8,37 @@ import * as Yup from 'yup';
 import Card from 'react-bootstrap/Card'
 import axios from 'axios';
 import Modal from './Modal';
+import { useState }from "react"
 
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required(),
   lastName: Yup.string().required(),
   email: Yup.string().email('the email address is invalid').required(),
-  phoneNumber: Yup.string().phoneNumber('the phone number is invalid'),
+  phoneNumber: Yup.string().matches(/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/,"Invalid phone number"),
 });
 
 export default function Reservations() {
+  const [showModal, setShowModal] = useState(false);
+
   const handleSubmit = async (values) => {
     try {
-      await axios.post("/resevations", values);
+      await axios.post("/reservations", values);
       alert("Form submitted successfully!");
+      setShowModal(false); // Hide the modal on successful submission
     } catch (error) {
       console.error(error);
       alert("Form submission failed");
     }
   }
 
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "2rem", paddingBottom: "3rem"}}>
       <Card className="shadow d-flex flex-column align-items-center" style={{width: "75%"}} >
+        <Card.Header as="h1" style={{ backgroundColor: "blue", color: "white", width: "100%" }}>Back to Search</Card.Header>
         <Card.Body className="d-flex flex-column align-items-center">
-          <h2>Book Us Today!</h2>
           <Formik
             validationSchema={schema}
             initialValues={{
@@ -120,6 +126,9 @@ export default function Reservations() {
           </Formik>
         </Card.Body>
       </Card>
+      <Modal show={showModal} handleClose={handleCloseModal}>
+        <p>Thank you for submitting the form!</p>
+      </Modal>
     </div>
   )
 }
